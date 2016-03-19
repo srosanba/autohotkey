@@ -1,6 +1,6 @@
 # autohotkey
 
-An introducton to AutoHotKey for SAS users.
+An introducton to AutoHotKey for SAS<sup>&reg;</sup> users.
 
 - More flexible.
 - More portable.
