@@ -10,16 +10,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;----- Hotstring #1 -----
 ::imho::in my humble opinion
 
-;----- Hotstring #2 -----
-::_better::
-(
-in my humble opinion
-)
-
 ;----- Multiline hotstring -----
-::_lgcomm::
+::commblock::
 (
 *--------------------------------------------------;
-*----- -----;
+*---------- ----------;
 *--------------------------------------------------;
 )
