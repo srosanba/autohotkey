@@ -5,8 +5,8 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ;----- User-specified Options -----
-#Hotstring EndChars `n`t
 #SingleInstance force
+#Hotstring EndChars `n`t
 
 ;----- Your first hotstring -----
 ::imho::in my humble opinion
