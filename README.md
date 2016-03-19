@@ -1,2 +1,6 @@
 # autohotkey
-AutoHotKey for SAS users, and why it beats SAS keyboard abbreviations (imho)
+An introducton to AutoHotKey for SAS users.
+- More flexible.
+- More portable.
+- More shareable.
+- Easier editing.
