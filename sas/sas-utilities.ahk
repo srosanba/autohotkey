@@ -42,7 +42,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
    
       %if %nrbquote(&id) ne %str() %then %do;
       
-         %put %str(W)ARNING: compare not valid because of WHERE or ID;
+         %put %str(W)ARNING: compare not valid because of ID;
          
          proc sort data=&base out=_base;
             by &id;
@@ -64,6 +64,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
       %else %if %nrbquote(&where) eq %str() %then %do;
       
+         %put %str(W)ARNING: compare not valid because of WHERE;
+         
          data _base;
             set &base;
             where &where;
