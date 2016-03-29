@@ -15,7 +15,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
    %let csvar = %sysfunc(translate(&var,%str(,),%str( )));
    
-   proc sql noprint;
+   proc sql;
       select   &csvar
       from     &data
       group by &csvar
@@ -40,19 +40,19 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
    %if %sysfunc(exist(&base)) %then %do;
    
-      %if &where ne %str() or &id ne %str() %then %do;
+      %if %nrbquote(&id) ne %str() %then %do;
       
          %put %str(W)ARNING: compare not valid because of WHERE or ID;
          
          proc sort data=&base out=_base;
             by &id;
-            %if &where ne %str() %then
+            %if %nrbquote(&where) ne %str() %then
                where &where; ;
          run;
          
          proc sort data=&compare out=_compare;
             by &id;
-            %if &where ne %str() %then
+            %if %nrbquote(&where) ne %str() %then
                where &where; ;
          run;
       
@@ -62,10 +62,19 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
          
       %end;
 
-      %else %do;
+      %else %if %nrbquote(&where) eq %str() %then %do;
       
-         proc compare base=&base compare=&compare listobs;
-            id &id;
+         data _base;
+            set &base;
+            where &where;
+         run;
+         
+         data _compare;
+            set &compare;
+            where &where;
+         run;
+         
+         proc compare base=_base compare=_compare listobs;
          run;
       
       %end;
