@@ -62,7 +62,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
          
       %end;
 
-      %else %if %nrbquote(&where) eq %str() %then %do;
+      %else %if %nrbquote(&where) ne %str() %then %do;
       
          %put %str(W)ARNING: compare not valid because of WHERE;
          
@@ -77,6 +77,13 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
          run;
          
          proc compare base=_base compare=_compare listobs;
+         run;
+      
+      %end;
+      
+      %else %do;
+      
+         proc compare base=&base compare=&compare listobs;
          run;
       
       %end;
