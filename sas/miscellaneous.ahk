@@ -11,7 +11,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ;--- toggle primary mouse button with Windows+a ---
 #a::
-   Run, "H:\AutoHotKey\mouse.lnk.lnk"
+   Run, "H:\AutoHotKey\mouse.lnk"
    sleep 250
    send {Space}
    Send {Enter}
